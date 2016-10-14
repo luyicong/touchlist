@@ -1,0 +1,36 @@
+
+/*Ʒ�Ʒ���*/
+.ot-menu{position: absolute;top: 0;left: 0;padding-bottom:52px;}
+.ot-menu ul{margin-top: -1px; background: #eeeeee;}
+.ot-menu ul li{ text-align:center; border-bottom: 1px solid #c8c8c8;border-top: 1px solid #c8c8c8;margin: -1px;}
+.ot-menu ul li a{font-size: 1.3rem;line-height: 52px;  }
+.ot-menu ul li.active { color: #f12e24; background: #ffffff;}
+.ot-maininfo{  float: left; background: #ffffff; overflow-y:auto}
+.menutype{  padding: 10px 12px;}
+.menutype a{ width: 40%; float: left; padding: 10px 10px;}
+/*.menutype a img{ max-width: 100%}*/
+/* shop */
+.Menu_box{  clear:both;  width:100%;  }
+#left_Menu {  position: absolute;  z-index: 1;  top: 77px;  bottom: 0px;  left: 0;  width: 30%;  overflow: hidden;  background: #F6F6F6;  }
+#right_Menu {  position: absolute;  z-index: 1;  top: 77px;  bottom: 0px;  left: 30%;  width: 70%;  background: #ffffff;  overflow: hidden;  }
+#right_Menu  #scroller2,#left_Menu  #scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}

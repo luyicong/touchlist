@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+html{font-size: 12px;}
+body{position:relative; font-family:"Open Sans","Source Han Sans","黑体-简", "微软雅黑", "宋体"; background-color: #ebebeb;}
+a{width:100%; height:100%; border:none; text-decoration: none; color: inherit;}
+img{width:100%; height:auto; border:none;}
+ul, ol, li { list-style: none; }
+.clear{clear:both; overflow:hidden; height:0; font-size:0; line-height:0;}
+
+/*indextop*/
+header{height: 95px; width: 100%; position: relative; background-color: #ffffff; z-index: 2000;}
+.OldHeader{ display: block; height: 44px; font-family: "microsoft yahei", Verdana, Arial, Helvetica, sans-serif;  }
+.OldHeader .OHeader { position: fixed; top: 0; width: 100%; box-shadow: 0 1px 0 rgba(0,0,0,.2); background: rgba(247,247,247,.9); }
+.OldHeader .OHeader h1{ height: 44px; line-height: 44px; text-align: center; color: #5b5b5d; font-weight: bold; text-shadow: 0 1px 0 #fff; font-size: 18px; }
+.OldHeader .OHeadBack{ position: absolute; left: 10px; top: 7px; }
+.OldHeader .OHeadBack a{ display: block; background: url(/common/html5/images/common/back_btn.png) no-repeat; background-size: 50px 30px; width: 50px; height: 30px; line-height: 30px; color: #333; font-size: 14px; text-indent: 20px; }

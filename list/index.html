@@ -1,0 +1,108 @@
+<!DOCTYPE html >
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>品牌团分类</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta http-equiv="Content-Type" content="text/html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/pub.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" charset="utf-8">   
+	$(function() {   		
+		//菜单框架自动获取高度
+		var doc_H=$(document).height();	
+		$('.Menu_box').height(doc_H);
+		window.onresize=function(){
+			var doc_H=$(document).height();	
+			$('.Menu_box').height(doc_H);
+		}
+	});
+
+
+	var myScroll_left;
+	var myScroll_right;
+	function loaded () {
+		myScroll_left = new IScroll('#left_Menu', { mouseWheel: true, click: true });
+		myScroll_right = new IScroll('#right_Menu', { mouseWheel: true, click: true });
+	}
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+    $(document).ready(function() {	//tbl切换
+        $(".ot-menu  li").click(function(){
+            tabIndex = $(this).index();
+            $(this).siblings("li").removeClass("active");
+            $(this).addClass("active");
+            $(".ot-maininfo").children(".menutype").hide();
+            $(".ot-maininfo").children(".menutype").eq(tabIndex).show();
+        });
+    });
+
+</script>
+</head>
+
+<body onLoad="loaded()">
+
+<header class="OldHeader">
+    <div class="OHeader">
+        <h1>品牌馆分类</h1>
+        <div class="OHeadBack"><a href="#"  onclick="history.go(-1)">返回</a></div>
+    </div>
+</header>
+
+<div class="mg-auto overflow">
+	<!--菜单-->
+	<div class="Menu_box">
+		<!---------左侧菜单---------->
+		<div id="left_Menu">
+			<div class="ot-menu" id="scroller">
+				<ul>
+					<li class="active"><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+					<li><a href="#">家电数码</a> </li>
+				</ul>
+			</div>
+		</div>
+		<!---------右侧侧菜单---------->
+		<div id="right_Menu">
+			<div class="menutype" id="scroller2">
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+				<a href="#"><img src="images/logo-phl.jpg"></a>
+
+			</div>
+		</div>
+
+	</div>
+	<!--菜单end-->
+</div>
+</body>
+</html>
