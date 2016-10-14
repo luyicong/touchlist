@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<style type="text/css" id="style">
+			*{padding:0;margin:0;}
+			ul,li{list-style: none;}
+			html{height: 100%;}
+			body{height: 100%;}
+			#wrap{
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			#list{
+				position:absolute;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+			}
+			#list li{
+				float: left;
+				overflow: hidden;
+			}
+			#list li a{
+				float: left;
+			}
+			#list img{
+				width: 100%;
+				display: block;
+			}
+			#nav{height:10px;padding:0;
+			overflow:hidden;position:absolute;right:15px;bottom: 5px;text-align: right;}
+			#nav span{display:inline-block;width: 10px;float: left;
+			height: 10px;border-radius:5px;background:#999999;margin:0 5px;}
+			#nav span.active{
+				background: red;
+			}
+		</style>
+		<script type="text/javascript" src="transform.js" ></script>
+		<script type="text/javascript">
+			document.addEventListener('touchstart',function(e){
+				e.preventDefault();
+			});
+			window.onload=function(){
+				var oWrap = document.querySelector('#wrap');
+				var oList = document.querySelector('#list');
+				oList.innerHTML+=oList.innerHTML;
+				var aLi = document.querySelectorAll('#list li');
+				var oNav = document.querySelectorAll('#nav span');
+				var css = document.querySelector('#style');
+				var timer = null;
+				var iNow = 0;
+				var style = '#wrap{height:'+aLi[0].offsetHeight+'px;}';
+					style+='#list{width:'+aLi.length+'00%;}';
+					style+='#list li{width:'+1/aLi.length*100+'%;}';
+					css.innerHTML+= style;
+				//手指的初始坐标
+				var startPoint = 0;
+				//元素初始移动的距离
+				var startX = 0;
+				cssTransform(oList,'translateX',0)
+				
+				autoPlay();
+				
+				oWrap.addEventListener('touchstart',function(e){
+					clearInterval(timer);
+					oList.style.WebkitTransition=oList.style.transition='none';
+					var translateX = cssTransform(oList,'translateX');
+					iNow = Math.round(-translateX/oWrap.offsetWidth);
+					if(iNow==0){
+						iNow=oNav.length;
+					}
+					if(iNow==aLi.length-1){
+						iNow=oNav.length-1;
+					}
+					cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
+					startPoint = e.changedTouches[0].pageX;
+					startX = cssTransform(oList,'translateX');
+				});
+				oWrap.addEventListener('touchmove',function(e){
+					//当前移动位置的坐标
+					var nowPoint = e.changedTouches[0].pageX;
+					//初始位置与移动位置的差值，求出移动的距离
+					var disX = nowPoint - startPoint;
+					//元素总共移动的距离=之前的距离+当前移动的距离
+					cssTransform(oList,'translateX',startX + disX);
+				});
+				oWrap.addEventListener('touchend',function(){
+					var translateX = cssTransform(oList,'translateX');
+					iNow = Math.round(-translateX/oWrap.offsetWidth);
+					play();
+					autoPlay();
+				});
+				//自动播放
+				function autoPlay(){
+					clearInterval(timer);
+					timer = setInterval(function(){
+						if(iNow==aLi.length-1){
+							iNow=oNav.length-1;
+						}
+						oList.style.WebkitTransition=oList.style.transition='none';
+						cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
+						iNow++;
+						setTimeout(function(){
+							play();
+						},30);
+					},2500);
+				}
+				
+				function play(){
+					oList.style.WebkitTransition=oList.style.transition='.5s';
+					cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
+					for(var i=0,len = oNav.length;i<len;i++){
+						oNav[i].className = '';
+					}
+					oNav[iNow%oNav.length].className = 'active';
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul id="list">
+				<li><a href="#"><img src="img/b1.jpg"/></a></li>
+				<li><a href="#"><img src="img/b2.jpg"/></a></li>
+				<li><a href="#"><img src="img/b3.jpg"/></a></li>
+				<li><a href="#"><img src="img/b4.jpg"/></a></li>
+				<li><a href="#"><img src="img/b5.jpg"/></a></li>
+			</ul>
+			<div id="nav">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</body>
+</html>
